@@ -2,7 +2,8 @@ version: "3"
 
 services:
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    image: lingoxp/hadoop-namenode:2.0.0-hadoop3.3.5-java8
+    hostname: namenode
     volumes:
       - namenode:/hadoop/dfs/name
     environment:
@@ -11,8 +12,10 @@ services:
       - ./hadoop-hive.env
     ports:
       - "50070:50070"
+      - "8020:8020"
   datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    image: lingoxp/hadoop-datanode:2.0.0-hadoop3.3.5-java8
+    hostname: datanode
     volumes:
       - datanode:/hadoop/dfs/data
     env_file:
@@ -21,8 +24,9 @@ services:
       SERVICE_PRECONDITION: "namenode:50070"
     ports:
       - "50075:50075"
+      - "50010:50010"
   hive-server:
-    image: bde2020/hive:2.3.2-postgresql-metastore
+    image: lingoxp/hive:3.1.3-postgresql-metastore
     env_file:
       - ./hadoop-hive.env
     environment:
@@ -31,7 +35,7 @@ services:
     ports:
       - "10000:10000"
   hive-metastore:
-    image: bde2020/hive:2.3.2-postgresql-metastore
+    image: lingoxp/hive:3.1.3-postgresql-metastore
     env_file:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
@@ -40,7 +44,7 @@ services:
     ports:
       - "9083:9083"
   hive-metastore-postgresql:
-    image: bde2020/hive-metastore-postgresql:2.3.0
+    image: lingoxp/hive-metastore-postgresql:2.3.0
   presto-coordinator:
     image: shawnzhu/prestodb:0.181
     ports:

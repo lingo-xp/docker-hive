@@ -1,14 +1,13 @@
-FROM bde2020/hadoop-base:2.0.0-hadoop2.7.4-java8
+FROM lingoxp/hadoop-base:2.0.0-hadoop3.3.5-java8
 
-MAINTAINER Yiannis Mouchakis <gmouchakis@iit.demokritos.gr>
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+
 
 # Allow buildtime config of HIVE_VERSION
 ARG HIVE_VERSION
 # Set HIVE_VERSION from arg if provided at build, env if provided at run, or default
 # https://docs.docker.com/engine/reference/builder/#using-arg-variables
 # https://docs.docker.com/engine/reference/builder/#environment-replacement
-ENV HIVE_VERSION=${HIVE_VERSION:-2.3.2}
+ENV HIVE_VERSION=${HIVE_VERSION:-3.1.3}
 
 ENV HIVE_HOME /opt/hive
 ENV PATH $HIVE_HOME/bin:$PATH
