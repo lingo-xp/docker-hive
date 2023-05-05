@@ -19,7 +19,7 @@ COPY postgresql-jdbc.jar $HIVE_HOME/lib/postgresql-jdbc.jar
 #Install Hive and PostgreSQL JDBC
 RUN apt-get update && apt-get install -y wget procps && \
 	tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz && \
-	mv apache-hive-$HIVE_VERSION-bin hive && \
+	mv apache-hive-$HIVE_VERSION-bin/* hive/. && \
 	rm apache-hive-$HIVE_VERSION-bin.tar.gz && \
 	apt-get --purge remove -y wget && \
 	apt-get clean && \
