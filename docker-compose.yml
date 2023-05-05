@@ -11,7 +11,7 @@ services:
     env_file:
       - ./hadoop-hive.env
     ports:
-      - "50070:50070"
+      - "9870:9870"
       - "8020:8020"
   datanode:
     image: lingoxp/hadoop-datanode:2.0.4-hadoop3.3.5-java8
@@ -21,7 +21,7 @@ services:
     env_file:
       - ./hadoop-hive.env
     environment:
-      SERVICE_PRECONDITION: "namenode:50070"
+      SERVICE_PRECONDITION: "namenode:9870"
     ports:
       - "50075:50075"
       - "50010:50010"
