@@ -2,7 +2,7 @@ version: "3"
 
 services:
   namenode:
-    image: lingoxp/hadoop-namenode:2.0.1-hadoop3.3.5-java8
+    image: lingoxp/hadoop-namenode:2.0.2-hadoop3.3.5-java8
     hostname: namenode
     volumes:
       - namenode:/hadoop/dfs/name
@@ -14,7 +14,7 @@ services:
       - "50070:50070"
       - "8020:8020"
   datanode:
-    image: lingoxp/hadoop-datanode:2.0.1-hadoop3.3.5-java8
+    image: lingoxp/hadoop-datanode:2.0.2-hadoop3.3.5-java8
     hostname: datanode
     volumes:
       - datanode:/hadoop/dfs/data
@@ -26,7 +26,7 @@ services:
       - "50075:50075"
       - "50010:50010"
   hive-server:
-    image: lingoxp/hive:3.1.4-postgresql-metastore
+    image: lingoxp/hive:3.1.5-postgresql-metastore
     env_file:
       - ./hadoop-hive.env
     environment:
@@ -35,7 +35,7 @@ services:
     ports:
       - "10000:10000"
   hive-metastore:
-    image: lingoxp/hive:3.1.4-postgresql-metastore
+    image: lingoxp/hive:3.1.5-postgresql-metastore
     env_file:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore

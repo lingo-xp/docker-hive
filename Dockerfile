@@ -1,4 +1,4 @@
-FROM lingoxp/hadoop-base:2.0.0-hadoop3.3.5-java8
+FROM lingoxp/hadoop-base:2.0.2-hadoop3.3.5-java8
 
 
 
@@ -48,7 +48,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 EXPOSE 10000
 EXPOSE 10002
 
-ENTRYPOINT ["/bin/bash entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["/bin/bash startup.sh"]
+CMD ["/bin/bash", "startup.sh"]
 
