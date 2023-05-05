@@ -72,8 +72,7 @@ services:
     ports:
       - "9083:9083"
   hive-metastore-postgresql:
-    image: lingoxp/hive-metastore-postgresql:2.4.0
-    command: /bin/bash /docker-entrypoint-initdb.d/init-user-db.sh
+    image: bde2020/hive-metastore-postgresql:2.3.0
 
   presto-coordinator:
     image: shawnzhu/prestodb:0.181
