@@ -49,7 +49,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 EXPOSE 10000
 EXPOSE 10002
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
 
-CMD ["/bin/bash", "startup.sh"]
+CMD ["/bin/sh","-c", "startup.sh"]
 
