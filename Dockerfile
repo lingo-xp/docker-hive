@@ -7,7 +7,7 @@ ARG HIVE_VERSION
 # Set HIVE_VERSION from arg if provided at build, env if provided at run, or default
 # https://docs.docker.com/engine/reference/builder/#using-arg-variables
 # https://docs.docker.com/engine/reference/builder/#environment-replacement
-ENV HIVE_VERSION=${HIVE_VERSION:-3.1.3}
+ENV HIVE_VERSION=${HIVE_VERSION:-3.1.0}
 
 ENV HIVE_HOME /opt/hive
 ENV PATH $HIVE_HOME/bin:$PATH
@@ -25,8 +25,8 @@ RUN apt-get update && apt-get install -y wget procps && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
-COPY postgresql-jdbc.jar $HIVE_HOME/lib/postgresql-jdbc.jar
-
+#COPY postgresql-jdbc.jar $HIVE_HOME/lib/postgresql-jdbc.jar
+COPY mysql-connector-j-8.0.33.jar $HIVE_HOME/lib/mysql-connector-j-8.0.33.jar
 
 #Spark should be compiled with Hive to be able to use it
 #hive-site.xml should be copied to $SPARK_HOME/conf folder

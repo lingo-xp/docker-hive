@@ -69,11 +69,15 @@ services:
     command: /opt/hive/bin/hive --service metastore
     restart: always
     environment:
-      SERVICE_PRECONDITION: "namenode:9000 datanode:9864 hive-metastore-postgresql:5432"
+      SERVICE_PRECONDITION: "namenode:9000 datanode:9864 hive-metastore-postgresql:3306"
     ports:
       - "9083:9083"
   hive-metastore-postgresql:
-    image: postgres:9.5.3
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    image: mysql:8.0.33
+    ports:
+      - "3306:3306"
 
   presto-coordinator:
     image: shawnzhu/prestodb:0.181
