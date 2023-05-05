@@ -73,7 +73,7 @@ services:
     ports:
       - "9083:9083"
   hive-metastore-postgresql:
-    image: bde2020/hive-metastore-postgresql:2.3.0
+    image: postgres:9.5.3
 
   presto-coordinator:
     image: shawnzhu/prestodb:0.181
