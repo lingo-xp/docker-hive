@@ -1,4 +1,4 @@
-FROM lingoxp/hadoop-base:2.0.3-hadoop3.3.5-java8
+FROM lingoxp/hadoop-base:2.0.4-hadoop3.3.5-java8
 
 
 
