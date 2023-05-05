@@ -15,7 +15,7 @@ ENV HADOOP_HOME /opt/hadoop-$HADOOP_VERSION
 
 WORKDIR /opt
 COPY apache-hive-$HIVE_VERSION-bin.tar.gz /opt/apache-hive-$HIVE_VERSION-bin.tar.gz
-COPY postgresql-jdbc.jar $HIVE_HOME/lib/postgresql-jdbc.jar
+
 #Install Hive and PostgreSQL JDBC
 RUN apt-get update && apt-get install -y wget procps && \
 	tar -xzvf apache-hive-$HIVE_VERSION-bin.tar.gz && \
@@ -24,6 +24,8 @@ RUN apt-get update && apt-get install -y wget procps && \
 	apt-get --purge remove -y wget && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
+
+COPY postgresql-jdbc.jar $HIVE_HOME/lib/postgresql-jdbc.jar
 
 
 #Spark should be compiled with Hive to be able to use it
