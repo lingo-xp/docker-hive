@@ -11,8 +11,9 @@ services:
     env_file:
       - ./hadoop-hive.env
     ports:
-      - "50070:50070"
-      - "8020:8020"
+      - 9870:9870
+      - 9000:9000
+
   datanode:
     image: lingoxp/hadoop-datanode:2.0.4-hadoop3.3.5-java8
     hostname: datanode
@@ -21,10 +22,34 @@ services:
     env_file:
       - ./hadoop-hive.env
     environment:
-      SERVICE_PRECONDITION: "namenode:50070"
-    ports:
-      - "50075:50075"
-      - "50010:50010"
+      SERVICE_PRECONDITION: "namenode:9870"
+
+  resourcemanager:
+    image: lingoxp/hadoop-resourcemanager:2.0.4-hadoop3.3.5-java8
+    container_name: resourcemanager
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+    env_file:
+      - ./hadoop-hive.env
+
+  nodemanager1:
+    image: lingoxp/hadoop-nodemanager:2.0.4-hadoop3.3.5-java8
+    container_name: nodemanager
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop-hive.env
+
+  historyserver:
+    image: lingoxp/hadoop-historyserver:2.0.4-hadoop3.3.5-java8
+    container_name: historyserver
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    volumes:
+      - hadoop_historyserver:/hadoop/yarn/timeline
+    env_file:
+      - ./hadoop-hive.env
+
   hive-server:
     image: lingoxp/hive:3.1.7-postgresql-metastore
     env_file:
@@ -40,7 +65,7 @@ services:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
+      SERVICE_PRECONDITION: "namenode:9000 datanode:9864 hive-metastore-postgresql:5432"
     ports:
       - "9083:9083"
   hive-metastore-postgresql:
@@ -53,3 +78,4 @@ services:
 volumes:
   namenode:
   datanode:
+  historyserver:
