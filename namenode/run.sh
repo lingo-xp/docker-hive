@@ -101,21 +101,21 @@ kadmin.local -q "xst  -k namenode.keytab  hdfs/namenode@DIPEAK.COM"
 kadmin.local -q "addprinc -randkey hdfs/datanode@DIPEAK.COM"
 kadmin.local -q "xst  -k datanode.keytab  hdfs/datanode@DIPEAK.COM"
 
-openssl req -new -x509 -keyout ca_private.key -out ca_cert -days 9999 -subj '/C=CN/ST=hangzhou/hangzhou/O=bigdata/OU=bigdata/CN=master'
+openssl req -nodes -new -x509 -keyout ca_private.key -out ca_cert -days 9999 -subj '/C=CN/ST=hangzhou/O=bigdata/OU=bigdata/CN=master'
 
 cd /
 
-keytool -keystore keystore -alias localhost -validity 9999 -genkey -keyalg RSA -keysize 2048 -dname "cn=Unknown, ou=Unknown, o=Unknown, c=Unknown"
+keytool -keystore keystore -alias localhost -validity 9999 -genkey -keyalg RSA -keysize 2048 -dname "cn=Unknown, ou=Unknown, o=Unknown, c=Unknown" -keypass 123456 -storepass 123456 -noprompt
 
-keytool -keystore truststore -alias CARoot -import -file /keys/ca_cert
+keytool -keystore truststore -alias CARoot -import -file /keys/ca_cert -keypass 123456 -storepass 123456 -noprompt
 
-keytool -keystore keystore -alias CARoot -import -file /keys/ca_cert
+keytool -keystore keystore -alias CARoot -import -file /keys/ca_cert -keypass 123456 -storepass 123456 -noprompt
 
-keytool -certreq -alias localhost -keystore keystore -file local_cert
+keytool -certreq -alias localhost -keystore keystore -file local_cert -keypass 123456 -storepass 123456 -noprompt
 
-openssl x509 -req -CA hd_ca_cert -CAkey /keys/ca_private.key -in local_cert -out local_cert_signed -days 9999 -CAcreateserial
+openssl x509 -req -CA /keys/ca_cert -CAkey /keys/ca_private.key -in local_cert -out local_cert_signed -days 9999 -CAcreateserial
 
-keytool -keystore keystore -alias localhost -import -file local_cert_signed
+keytool -keystore keystore -alias localhost -import -file local_cert_signed -keypass 123456 -storepass 123456
 
 
 

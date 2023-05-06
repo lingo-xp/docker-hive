@@ -6,6 +6,8 @@ HEALTHCHECK CMD curl -f http://localhost:9864/ || exit 1
 ENV HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
 
 ADD run.sh /run.sh
+COPY ssl-client.xml /etc/hadoop/ssl-client.xml
+COPY ssl-server.xml /etc/hadoop/ssl-server.xml
 #COPY commons-daemon-1.3.3-src.tar.gz /commons-daemon-1.3.3-src.tar.gz
 #COPY commons-daemon-1.3.3.jar /commons-daemon-1.3.3.jar
 #RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \

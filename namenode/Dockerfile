@@ -9,6 +9,8 @@ VOLUME /hadoop/dfs/name
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     krb5-kdc krb5-admin-server
 ADD run.sh /run.sh
+COPY ssl-client.xml /etc/hadoop/ssl-client.xml
+COPY ssl-server.xml /etc/hadoop/ssl-server.xml
 RUN chmod a+x /run.sh
 #ADD run2.sh /run2.sh
 #RUN chmod a+x /run2.sh
