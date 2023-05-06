@@ -12,4 +12,5 @@ RUN chmod a+x /run.sh
 
 EXPOSE 9870
 
+CMD ["sleep", "7200"]
 #CMD ["/run.sh"]
