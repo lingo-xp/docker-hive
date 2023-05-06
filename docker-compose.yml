@@ -41,7 +41,7 @@ services:
     env_file:
       - ./hadoop-hive.env
     networks:
-      clickhouse_net:
+      net:
         ipv4_address: 172.16.0.3
 #    environment:
 #      - HDFS_DATANODE_SECURE_USER=root
@@ -90,7 +90,7 @@ services:
     ports:
       - "10000:10000"
     networks:
-      clickhouse_net:
+      net:
         ipv4_address: 172.16.0.4
 
 
@@ -105,7 +105,7 @@ services:
     ports:
       - "9083:9083"
     networks:
-      clickhouse_net:
+      net:
         ipv4_address: 172.16.0.5
 
 
