@@ -12,9 +12,7 @@ ADD run.sh /run.sh
 COPY ssl-client.xml /etc/hadoop/ssl-client.xml
 COPY ssl-server.xml /etc/hadoop/ssl-server.xml
 RUN chmod a+x /run.sh
-RUN echo "172.16.0.3    datanode" >> /etc/hosts && \
-    echo "172.16.0.4    hive-server" >> /etc/hosts && \
-    echo "172.16.0.5    hive-metastore" >> /etc/hosts
+
 #ADD run2.sh /run2.sh
 #RUN chmod a+x /run2.sh
 

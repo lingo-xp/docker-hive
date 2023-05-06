@@ -87,6 +87,9 @@ echo "Start kdc service"
 krb5kdc
 kadmin
 
+echo "172.16.0.3    datanode" >> /etc/hosts
+echo "172.16.0.4    hive-server" >> /etc/hosts
+echo "172.16.0.5    hive-metastore" >> /etc/hosts
 
 
 mkdir -p /keys
