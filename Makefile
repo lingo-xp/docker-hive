@@ -1,6 +1,6 @@
 current_branch1 = "3.1.7-postgresql-metastore"
 hive:
-	docker build -t lingoxp/hive:$(current_branch1) ./
+	docker build -t lingoxp/hive:$(current_branch1) ./hive
 
 
 

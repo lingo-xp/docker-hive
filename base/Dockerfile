@@ -40,7 +40,7 @@ ENV USER=root
 ENV PATH $HADOOP_HOME/bin/:$PATH
 
 ADD entrypoint.sh /entrypoint.sh
-COPY /tmp/server.keytab /server.keytab
+COPY server.keytab /server.keytab
 
 RUN chmod a+x /entrypoint.sh
 
