@@ -87,13 +87,17 @@ echo "Start kdc service"
 krb5kdc
 kadmin
 
+
+
+mkdir -p /keys
+rm /keys/*
+cd /keys
 echo "generate namenode.keytab"
-cd /
+
 kadmin.local -q "addprinc -randkey hdfs/namenode@DIPEAK.COM"
 kadmin.local -q "xst  -k namenode.keytab  hdfs/namenode@DIPEAK.COM"
 
-mkdir -p /keys
-cd /keys
+
 kadmin.local -q "addprinc -randkey hdfs/datanode@DIPEAK.COM"
 kadmin.local -q "xst  -k datanode.keytab  hdfs/datanode@DIPEAK.COM"
 
