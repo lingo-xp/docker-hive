@@ -24,7 +24,7 @@ openssl x509 -req -CA /keys/ca_cert -CAkey /keys/ca_private.key -in local_cert -
 
 keytool -keystore keystore -alias localhost -import -file local_cert_signed -keypass 123456 -storepass 123456
 
-while :; do  sleep 10; done
 
-#kinit -k -t /keys/datanode.keytab hdfs/datanode@DIPEAK.COM
-#$HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR datanode
+
+kinit -k -t /keys/datanode.keytab hdfs/datanode@DIPEAK.COM
+$HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR datanode

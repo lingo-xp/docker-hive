@@ -1,6 +1,12 @@
 version: "3"
 
-
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.0.0/24
+          gateway: 172.16.0.1
 services:
   namenode:
     image: lingoxp/hadoop-namenode:2.0.4-hadoop3.3.5-java8
@@ -13,7 +19,9 @@ services:
       - KRB5_REALM=DIPEAK.COM
       - KRB5_KDC=namenode
       - KRB5_PASS=111111
-
+    networks:
+      net:
+        ipv4_address: 172.16.0.2
 
     env_file:
       - ./hadoop-hive.env
@@ -32,6 +40,9 @@ services:
       - '~/keys:/keys'
     env_file:
       - ./hadoop-hive.env
+    networks:
+      clickhouse_net:
+        ipv4_address: 172.16.0.3
 #    environment:
 #      - HDFS_DATANODE_SECURE_USER=root
 #      - JSVC_HOME=/opt/hadoop-3.3.5/libexec/
@@ -78,6 +89,9 @@ services:
       SERVICE_PRECONDITION: "hive-metastore:9083"
     ports:
       - "10000:10000"
+    networks:
+      clickhouse_net:
+        ipv4_address: 172.16.0.4
 
 
   hive-metastore:
@@ -90,6 +104,9 @@ services:
       SERVICE_PRECONDITION: "namenode:9000 datanode:9864 hive-metastore-postgresql:3306"
     ports:
       - "9083:9083"
+    networks:
+      clickhouse_net:
+        ipv4_address: 172.16.0.5
 
 
   hive-metastore-postgresql:
