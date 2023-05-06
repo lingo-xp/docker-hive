@@ -10,7 +10,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     krb5-kdc krb5-admin-server
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
+ADD run2.sh /run2.sh
+RUN chmod a+x /run2.sh
 
 EXPOSE 9870
 
-CMD ["/run.sh"]
+CMD ["/run2.sh"]
