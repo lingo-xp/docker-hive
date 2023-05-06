@@ -10,12 +10,16 @@ services:
       - CLUSTER_NAME=test
       - KRB5_REALM=DIPEAK.COM
       - KRB5_KDC=namenode
+      - KRB5_PASS=111111
 
     env_file:
       - ./hadoop-hive.env
     ports:
-      - 9870:9870
-      - 9000:9000
+      - "9870:9870"
+      - "9000:9000"
+      - "88:88"
+      - "464:464"
+      - "749:749"
 
   datanode:
     image: lingoxp/hadoop-datanode:2.0.4-hadoop3.3.5-java8
@@ -87,24 +91,9 @@ services:
     ports:
       - "8080:8080"
 
-  kdc:
-    image: gcavalcante8808/krb5-server
-    build: .
-    restart: always
-    ports:
-      - "88:88"
-      - "464:464"
-      - "749:749"
-    environment:
-      KRB5_REALM: DIPEAK.COM
-      KRB5_KDC: kdc
-      KRB5_PASS: 111111
-    volumes:
-      - krb5kdc-data:/var/lib/krb5kdc
-
 
 volumes:
   namenode:
   datanode:
   historyserver:
-  krb5kdc-data:
+
