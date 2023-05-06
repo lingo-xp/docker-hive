@@ -43,5 +43,6 @@ ADD entrypoint.sh /entrypoint.sh
 
 RUN chmod a+x /entrypoint.sh
 
+COPY krb5.conf /etc/krb5.conf
 
 ENTRYPOINT ["/entrypoint.sh"]
