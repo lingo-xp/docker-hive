@@ -19,5 +19,6 @@ if [ "`ls -A $namedir`" == "" ]; then
   $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode -format $CLUSTER_NAME
 fi
 
-kinit -k -t /server.keytab server/server-host@DIPEAK.COM
-$HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode
+while :; do sleep 10; done
+#kinit -k -t /server.keytab server/server-host@DIPEAK.COM
+#$HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR namenode

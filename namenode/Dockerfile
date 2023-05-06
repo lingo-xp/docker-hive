@@ -6,7 +6,7 @@ FROM lingoxp/hadoop-base:2.0.4-hadoop3.3.5-java8
 ENV HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
 RUN mkdir -p /hadoop/dfs/name
 VOLUME /hadoop/dfs/name
-
+RUN apt install -y krb5-kdc krb5-admin-server
 ADD run.sh /run.sh
 RUN chmod a+x /run.sh
 
