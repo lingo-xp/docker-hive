@@ -106,7 +106,7 @@ services:
     volumes:
       - '~/keys:/keys'
     environment:
-      SERVICE_PRECONDITION: "namenode:9000  hive-metastore-postgresql:3306"
+      SERVICE_PRECONDITION: "namenode:9000 "
     ports:
       - "9083:9083"
     networks:
