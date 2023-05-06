@@ -19,6 +19,22 @@
         <description>Optional. The keystore file format, default value is "jks".
         </description>
     </property>
+    <property>
+        <name>ssl.server.keystore.location</name>
+        <value>/keystore</value>
+    </property>
+    <property>
+        <name>ssl.server.truststore.type</name>
+        <value>jks</value>
+    </property>
+    <property>
+        <name>ssl.server.truststore.location</name>
+        <value>/truststore</value>
+    </property>
+    <property>
+        <name>ssl.server.truststore.password</name>
+        <value>123456</value>
+    </property>
 
     <property>
         <name>ssl.server.exclude.cipher.list</name>
