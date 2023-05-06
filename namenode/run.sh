@@ -101,6 +101,18 @@ kadmin.local -q "xst  -k namenode.keytab  hdfs/namenode@DIPEAK.COM"
 kadmin.local -q "addprinc -randkey hdfs/datanode@DIPEAK.COM"
 kadmin.local -q "xst  -k datanode.keytab  hdfs/datanode@DIPEAK.COM"
 
+#keytool -genkey -alias namenodekey -keyalg RSA -keypass password -storepass password -keystore namenode.jks -dname "cn=Unknown, ou=Unknown, o=Unknown, c=Unknown"
+#keytool -genkey -alias datanodekey -keyalg RSA -keypass password -storepass password -keystore datanode.jks -dname "cn=Unknown, ou=Unknown, o=Unknown, c=Unknown"
+#
+#
+#keytool -export -alias namenodekey -storepass password -file namenode.cert -keystore namenode.jks
+#keytool -export -alias datanodekey -storepass password -file datanode.cert -keystore datanode.jks
+#
+#keytool -import -v -trustcacerts -alias namenodekey -file namenode.cert -keystore truststore.jks -keypass password
+#keytool -import -v -trustcacerts -alias datanodekey -file datanode.cert -keystore truststore.jks -keypass password
+#
+
+cd /
 kinit -k -t /keys/namenode.keytab hdfs/namenode@DIPEAK.COM
 namedir=`echo $HDFS_CONF_dfs_namenode_name_dir | perl -pe 's#file://##'`
 if [ ! -d $namedir ]; then
