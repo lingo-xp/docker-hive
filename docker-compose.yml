@@ -32,6 +32,8 @@ services:
       - '~/keys:/keys'
     env_file:
       - ./hadoop-hive.env
+    environment:
+      - HDFS_DATANODE_SECURE_USER=root
 
 
 
