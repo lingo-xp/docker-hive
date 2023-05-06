@@ -101,7 +101,7 @@ kadmin.local -q "xst  -k namenode.keytab  hdfs/namenode@DIPEAK.COM"
 kadmin.local -q "addprinc -randkey hdfs/datanode@DIPEAK.COM"
 kadmin.local -q "xst  -k datanode.keytab  hdfs/datanode@DIPEAK.COM"
 
-kinit -k -t /namenode.keytab hdfs/namenode@DIPEAK.COM
+kinit -k -t /keys/namenode.keytab hdfs/namenode@DIPEAK.COM
 namedir=`echo $HDFS_CONF_dfs_namenode_name_dir | perl -pe 's#file://##'`
 if [ ! -d $namedir ]; then
   echo "Namenode name directory not found: $namedir"
