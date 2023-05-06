@@ -28,7 +28,6 @@ RUN tar -zxvf /tmp/hadoop.tar.gz -C /opt/ \
 
 RUN ln -s /opt/hadoop-$HADOOP_VERSION/etc/hadoop /etc/hadoop
 
-COPY server.keytab /opt/hadoop-$HADOOP_VERSION/etc/hadoop/
 RUN mkdir /opt/hadoop-$HADOOP_VERSION/logs
 
 RUN mkdir /hadoop-data
@@ -40,10 +39,9 @@ ENV USER=root
 ENV PATH $HADOOP_HOME/bin/:$PATH
 
 ADD entrypoint.sh /entrypoint.sh
-COPY server.keytab /server.keytab
+
 
 RUN chmod a+x /entrypoint.sh
 
-COPY krb5.conf /etc/krb5.conf
 
 ENTRYPOINT ["/entrypoint.sh"]

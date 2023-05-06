@@ -14,5 +14,5 @@ ADD krb-env.sh /krb-env.sh
 RUN chmod a+x /krb-env.sh
 EXPOSE 9870
 CMD ["/krb-env.sh"]
-CMD ["sleep", "7200"]
-#CMD ["/run.sh"]
+CMD [""]
+CMD ["/run.sh"]

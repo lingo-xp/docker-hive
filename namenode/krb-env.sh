@@ -82,3 +82,16 @@ EOT
     kadmin.local -q "addprinc -pw ${KRB5_PASS} admin/admin@${KRB5_REALM}"
 
 fi
+
+krb5kdc
+kadmin
+
+kadmin.local -q "addprinc -randkey hdfs/namenode@DIPEAK.COM"
+kadmin.local -q "xst  -k namenode.keytab  hdfs/namenode@DIPEAK.COM"
+
+mkdir -p /keys
+cd /keys
+kadmin.local -q "addprinc -randkey hdfs/datanode@DIPEAK.COM"
+kadmin.local -q "xst  -k datanode.keytab  hdfs/datanode@DIPEAK.COM"
+
+kinit -k -t /namenode.keytab hdfs/namenode@DIPEAK.COM
