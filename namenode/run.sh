@@ -104,6 +104,12 @@ kadmin.local -q "xst  -k namenode.keytab  hdfs/namenode@DIPEAK.COM"
 kadmin.local -q "addprinc -randkey hdfs/datanode@DIPEAK.COM"
 kadmin.local -q "xst  -k datanode.keytab  hdfs/datanode@DIPEAK.COM"
 
+kadmin.local -q "addprinc -randkey hive/hive-server@DIPEAK.COM"
+kadmin.local -q "xst  -k hive-server.keytab  hive/hive-server@DIPEAK.COM"
+
+kadmin.local -q "addprinc -randkey hive/hive-metastore@DIPEAK.COM"
+kadmin.local -q "xst  -k hive-metastore.keytab  hive/hive-metastore@DIPEAK.COM"
+
 openssl req -nodes -new -x509 -keyout ca_private.key -out ca_cert -days 9999 -subj '/C=CN/ST=hangzhou/O=bigdata/OU=bigdata/CN=master'
 
 cd /

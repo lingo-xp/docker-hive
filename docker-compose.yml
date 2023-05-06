@@ -84,6 +84,8 @@ services:
     image: lingoxp/hive:3.1.7-postgresql-metastore
     env_file:
       - ./hadoop-hive.env
+    volumes:
+      - '~/keys:/keys'
     environment:
       HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
       SERVICE_PRECONDITION: "hive-metastore:9083"
@@ -100,6 +102,8 @@ services:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
     restart: always
+    volumes:
+      - '~/keys:/keys'
     environment:
       SERVICE_PRECONDITION: "namenode:9000 datanode:9864 hive-metastore-postgresql:3306"
     ports:
