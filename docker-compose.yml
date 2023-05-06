@@ -33,7 +33,9 @@ services:
     env_file:
       - ./hadoop-hive.env
     environment:
-      SERVICE_PRECONDITION: "namenode:9870"
+      - HDFS_DATANODE_SECURE_USER=root
+      - JSVC_HOME=/usr/bin
+
 
 
 #  resourcemanager:
