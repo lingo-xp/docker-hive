@@ -43,8 +43,8 @@ services:
     networks:
       net:
         ipv4_address: 172.16.0.3
-    environment:
-       SERVICE_PRECONDITION: "namenode:9000"
+    depends_on:
+      - namenode
 #      - HDFS_DATANODE_SECURE_USER=root
 #      - JSVC_HOME=/opt/hadoop-3.3.5/libexec/
 
@@ -94,6 +94,9 @@ services:
     networks:
       net:
         ipv4_address: 172.16.0.4
+    depends_on:
+      - namenode
+      - hive-metastore
 
 
   hive-metastore:
@@ -111,6 +114,9 @@ services:
     networks:
       net:
         ipv4_address: 172.16.0.5
+    depends_on:
+      - namenode
+      - hive-metastore-postgresql
 
 
   hive-metastore-postgresql:
