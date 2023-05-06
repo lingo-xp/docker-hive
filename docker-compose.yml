@@ -13,9 +13,7 @@ services:
       - KRB5_REALM=DIPEAK.COM
       - KRB5_KDC=namenode
       - KRB5_PASS=111111
-    networks:
-      netBackEnd:
-        - ipv4_address: 192.168.0.1
+
 
     env_file:
       - ./hadoop-hive.env
@@ -36,9 +34,7 @@ services:
       - ./hadoop-hive.env
     environment:
       SERVICE_PRECONDITION: "namenode:9870"
-    networks:
-      netBackEnd:
-        - ipv4_address: 192.168.0.2
+
 
   resourcemanager:
     image: lingoxp/hadoop-resourcemanager:2.0.4-hadoop3.3.5-java8
