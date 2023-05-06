@@ -103,7 +103,7 @@ services:
     image: lingoxp/hive:3.1.7-postgresql-metastore
     env_file:
       - ./hadoop-hive.env
-    command: /opt/hive/bin/hive --service metastore
+    command: kinit -k -t /keys/hive-metastore.keytab hive/hive-metastore@DIPEAK.COM && /opt/hive/bin/hive --service metastore
     restart: always
     volumes:
       - '~/keys:/keys'

@@ -10,5 +10,5 @@ while [  "`ls -A $namedir`" == "" ]; do
     sleep 10;
 done
 cd $HIVE_HOME/bin
-#kinit -k -t /server.keytab server/server-host@DIPEAK.COM
+kinit -k -t /keys/hive-server.keytab hive/hive-server@DIPEAK.COM
 ./hiveserver2 --hiveconf hive.server2.enable.doAs=false
