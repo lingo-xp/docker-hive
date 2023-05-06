@@ -6,7 +6,7 @@ networks:
     ipam:
       config:
         - subnet: 172.16.0.0/24
-          gateway: 172.16.0.1
+
 services:
   namenode:
     image: lingoxp/hadoop-namenode:2.0.4-hadoop3.3.5-java8
