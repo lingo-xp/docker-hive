@@ -111,9 +111,5 @@ function wait_for_it()
     echo "[$i/$max_try] $service:${port} is available."
 }
 
-for i in ${SERVICE_PRECONDITION[@]}
-do
-    wait_for_it ${i}
-done
 
 
