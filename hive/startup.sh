@@ -14,7 +14,6 @@ while [  "`ls -A $namedir`" == "" ]; do
     sleep 10;
 done
 
-while :; do  sleep 10; done
 
 if [ -z "$HIVE_TYPE" ];then
 	if [ "$HIVE_TYPE" == "server" ];then
