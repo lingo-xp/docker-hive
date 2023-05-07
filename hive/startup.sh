@@ -19,9 +19,8 @@ while :; do  sleep 10; done
 if [ -z "$HIVE_TYPE" ];then
 	if [ "$HIVE_TYPE" == "server" ];then
 	  echo "hive server start"
-  	cd $HIVE_HOME/bin
     kinit -k -t /keys/hive-server.keytab root/hive-server@DIPEAK.COM
-    ./hiveserver2 --hiveconf hive.server2.enable.doAs=false
+    /opt/hive/bin/hiveserver2 --hiveconf hive.server2.enable.doAs=false
   else
     echo "hive metastore start"
     kinit -k -t /keys/hive-metastore.keytab root/hive-metastore@DIPEAK.COM

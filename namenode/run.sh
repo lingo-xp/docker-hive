@@ -90,6 +90,10 @@ kadmin
 echo "172.16.0.3    datanode" >> /etc/hosts
 echo "172.16.0.4    hive-server" >> /etc/hosts
 echo "172.16.0.5    hive-metastore" >> /etc/hosts
+echo "172.16.0.6    hive-metastore-postgresql" >> /etc/hosts
+echo "172.16.0.7    resourcemanager" >> /etc/hosts
+echo "172.16.0.8    nodemanager" >> /etc/hosts
+echo "172.16.0.9    historyserver" >> /etc/hosts
 
 
 mkdir -p /keys
@@ -109,6 +113,15 @@ kadmin.local -q "xst  -k hive-server.keytab  root/hive-server@DIPEAK.COM"
 
 kadmin.local -q "addprinc -randkey root/hive-metastore@DIPEAK.COM"
 kadmin.local -q "xst  -k hive-metastore.keytab  root/hive-metastore@DIPEAK.COM"
+
+kadmin.local -q "addprinc -randkey root/resourcemanager@DIPEAK.COM"
+kadmin.local -q "xst  -k resourcemanager.keytab  root/resourcemanager@DIPEAK.COM"
+
+kadmin.local -q "addprinc -randkey root/hive-nodemanager@DIPEAK.COM"
+kadmin.local -q "xst  -k nodemanager.keytab  root/nodemanager@DIPEAK.COM"
+
+kadmin.local -q "addprinc -randkey root/historyserver@DIPEAK.COM"
+kadmin.local -q "xst  -k historyserver.keytab  root/historyserver@DIPEAK.COM"
 
 openssl req -nodes -new -x509 -keyout ca_private.key -out ca_cert -days 9999 -subj '/C=CN/ST=hangzhou/O=bigdata/OU=bigdata/CN=master'
 
