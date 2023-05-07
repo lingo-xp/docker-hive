@@ -6,6 +6,9 @@ hadoop fs -chmod g+w   /tmp
 hadoop fs -chmod g+w   /user/hive/warehouse
 
 echo "172.16.0.2    namenode" >> /etc/hosts
+echo "172.16.0.4    hive-server" >> /etc/hosts
+echo "172.16.0.5    hive-metastore" >> /etc/hosts
+echo "172.16.0.6    hive-metastore-postgresql" >> /etc/hosts
 namedir='/keys'
 while [  "`ls -A $namedir`" == "" ]; do
     sleep 10;

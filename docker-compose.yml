@@ -124,6 +124,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
     image: mysql:8.0.33
+    networks:
+      net:
+        ipv4_address: 172.16.0.6
     ports:
       - "3306:3306"
 
