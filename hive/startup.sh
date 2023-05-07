@@ -5,10 +5,13 @@ hadoop fs -mkdir -p    /user/hive/warehouse
 hadoop fs -chmod g+w   /tmp
 hadoop fs -chmod g+w   /user/hive/warehouse
 
+echo "172.16.0.2    namenode" >> /etc/hosts
 namedir='/keys'
 while [  "`ls -A $namedir`" == "" ]; do
     sleep 10;
 done
+
+while :; do  sleep 10; done
 
 if [ -z "$HIVE_TYPE" ];then
 	if [ "$HIVE_TYPE" == "server" ];then
