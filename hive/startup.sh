@@ -6,13 +6,12 @@ echo "172.16.0.2    namenode" >> /etc/hosts
 echo "172.16.0.4    hive-server" >> /etc/hosts
 echo "172.16.0.5    hive-metastore" >> /etc/hosts
 echo "172.16.0.6    hive-metastore-postgresql" >> /etc/hosts
-namedir='/keys'
-while [  "`ls -A $namedir`" == "" ]; do
-    sleep 10;
-done
 
 
-if [ -z "$HIVE_TYPE" ];then
+echo "$HIVE_TYPE"
+
+
+if [ ! -z "$HIVE_TYPE" ];then
 	if [ "$HIVE_TYPE" == "server" ];then
 	  echo "hive server start"
 	  echo "172.16.0.2    namenode" >> /etc/hosts
