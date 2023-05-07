@@ -1,7 +1,7 @@
 FROM lingoxp/hadoop-base:2.0.4-hadoop3.3.5-java8
 
 
-HEALTHCHECK CMD curl -f http://localhost:9864/ || exit 1
+
 
 ENV HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
 
@@ -25,6 +25,5 @@ COPY ssl-server.xml /etc/hadoop/ssl-server.xml
 RUN mkdir -p /hadoop/dfs/data && chmod a+x /run.sh
 VOLUME /hadoop/dfs/data
 
-EXPOSE 9864
 
 CMD ["/run.sh"]

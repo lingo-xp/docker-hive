@@ -1,7 +1,7 @@
 FROM lingoxp/hadoop-base:2.0.4-hadoop3.3.5-java8
 
 
-HEALTHCHECK CMD curl -f http://localhost:9870/ || exit 1
+HEALTHCHECK CMD curl -f http://localhost:9000/ || exit 1
 
 ENV HDFS_CONF_dfs_namenode_name_dir=file:///hadoop/dfs/name
 RUN mkdir -p /hadoop/dfs/name
@@ -16,6 +16,6 @@ RUN chmod a+x /run.sh
 #ADD run2.sh /run2.sh
 #RUN chmod a+x /run2.sh
 
-EXPOSE 9870
+EXPOSE 9000
 
 CMD ["/run.sh"]
