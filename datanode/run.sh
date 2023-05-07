@@ -26,5 +26,5 @@ keytool -keystore keystore -alias localhost -import -file local_cert_signed -key
 
 
 
-kinit -k -t /keys/datanode.keytab hdfs/datanode@DIPEAK.COM
+kinit -k -t /keys/datanode.keytab root/datanode@DIPEAK.COM
 $HADOOP_HOME/bin/hdfs --config $HADOOP_CONF_DIR datanode
