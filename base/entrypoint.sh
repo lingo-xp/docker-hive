@@ -114,5 +114,6 @@ function wait_for_it()
     echo "[$i/$max_try] $service:${port} is available."
 }
 
+exec $@
 
 
