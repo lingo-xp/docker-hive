@@ -117,7 +117,7 @@ kadmin.local -q "xst  -k hive-metastore.keytab  root/hive-metastore@DIPEAK.COM"
 kadmin.local -q "addprinc -randkey root/resourcemanager@DIPEAK.COM"
 kadmin.local -q "xst  -k resourcemanager.keytab  root/resourcemanager@DIPEAK.COM"
 
-kadmin.local -q "addprinc -randkey root/hive-nodemanager@DIPEAK.COM"
+kadmin.local -q "addprinc -randkey root/nodemanager@DIPEAK.COM"
 kadmin.local -q "xst  -k nodemanager.keytab  root/nodemanager@DIPEAK.COM"
 
 kadmin.local -q "addprinc -randkey root/historyserver@DIPEAK.COM"
