@@ -1,9 +1,6 @@
 #!/bin/bash
 
-hadoop fs -mkdir       /tmp
-hadoop fs -mkdir -p    /user/hive/warehouse
-hadoop fs -chmod g+w   /tmp
-hadoop fs -chmod g+w   /user/hive/warehouse
+
 
 echo "172.16.0.2    namenode" >> /etc/hosts
 echo "172.16.0.4    hive-server" >> /etc/hosts
@@ -26,6 +23,10 @@ if [ -z "$HIVE_TYPE" ];then
     echo "172.16.0.8    nodemanager" >> /etc/hosts
     echo "172.16.0.9    historyserver" >> /etc/hosts
     kinit -k -t /keys/hive-server.keytab root/hive-server@DIPEAK.COM
+    hadoop fs -mkdir       /tmp
+    hadoop fs -mkdir -p    /user/hive/warehouse
+    hadoop fs -chmod g+w   /tmp
+    hadoop fs -chmod g+w   /user/hive/warehouse
     /opt/hive/bin/hiveserver2 --hiveconf hive.server2.enable.doAs=false
   else
     echo "hive metastore start"
