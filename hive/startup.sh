@@ -9,6 +9,18 @@ namedir='/keys'
 while [  "`ls -A $namedir`" == "" ]; do
     sleep 10;
 done
-cd $HIVE_HOME/bin
-kinit -k -t /keys/hive-server.keytab root/hive-server@DIPEAK.COM
-./hiveserver2 --hiveconf hive.server2.enable.doAs=false
+
+if [ -z "$HIVE_TYPE" ];then
+	if [ "$HIVE_TYPE" == "server" ];then
+  	cd $HIVE_HOME/bin
+    kinit -k -t /keys/hive-server.keytab root/hive-server@DIPEAK.COM
+    ./hiveserver2 --hiveconf hive.server2.enable.doAs=false
+  else
+    kinit -k -t /keys/hive-metastore.keytab root/hive-metastore@DIPEAK.COM
+  	/opt/hive/bin/hive --service metastore
+  fi
+else
+	exit 1
+fi
+
+
