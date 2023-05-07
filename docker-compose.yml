@@ -124,6 +124,7 @@ services:
         ipv4_address: 172.16.0.4
     depends_on:
       - nodemanager
+      - hive-metastore
 
 
   hive-metastore:

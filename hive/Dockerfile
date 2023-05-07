@@ -40,16 +40,14 @@ ADD conf/hive-log4j2.properties $HIVE_HOME/conf
 ADD conf/ivysettings.xml $HIVE_HOME/conf
 ADD conf/llap-daemon-log4j2.properties $HIVE_HOME/conf
 
-COPY startup.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/startup.sh
+ADD startup.sh /startup.sh
+RUN chmod a+x /startup.sh
 
-COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
+
 
 EXPOSE 10000
 EXPOSE 10002
 
-ENTRYPOINT ["entrypoint.sh"]
 
-CMD ["/bin/sh","-c", "startup.sh"]
+CMD ["/startup.sh"]
 

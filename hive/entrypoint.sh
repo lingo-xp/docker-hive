@@ -38,7 +38,11 @@ configure /etc/hadoop/yarn-site.xml yarn YARN_CONF
 configure /etc/hadoop/httpfs-site.xml httpfs HTTPFS_CONF
 configure /etc/hadoop/kms-site.xml kms KMS_CONF
 configure /etc/hadoop/mapred-site.xml mapred MAPRED_CONF
-configure /opt/hive/conf/hive-site.xml hive HIVE_SITE_CONF
+
+if [ -d "/opt/hive" ]; then
+    configure /opt/hive/conf/hive-site.xml hive HIVE_SITE_CONF
+fi
+
 
 if [ "$MULTIHOMED_NETWORK" = "1" ]; then
     echo "Configuring for multihomed network"
