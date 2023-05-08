@@ -94,6 +94,7 @@ echo "172.16.0.6    hive-metastore-postgresql" >> /etc/hosts
 echo "172.16.0.7    resourcemanager" >> /etc/hosts
 echo "172.16.0.8    nodemanager" >> /etc/hosts
 echo "172.16.0.9    historyserver" >> /etc/hosts
+echo "172.16.0.10    testenv" >> /etc/hosts
 echo "192.168.110.15    localclient" >> /etc/hosts
 
 
@@ -126,6 +127,9 @@ kadmin.local -q "xst  -k historyserver.keytab  root/historyserver@DIPEAK.COM"
 
 kadmin.local -q "addprinc -randkey lingo/localclient@DIPEAK.COM"
 kadmin.local -q "xst  -k localclient.keytab  lingo/localclient@DIPEAK.COM"
+
+kadmin.local -q "addprinc -randkey root/testenv@DIPEAK.COM"
+kadmin.local -q "xst  -k testenv.keytab  root/testenv@DIPEAK.COM"
 
 openssl req -nodes -new -x509 -keyout ca_private.key -out ca_cert -days 9999 -subj '/C=CN/ST=hangzhou/O=bigdata/OU=bigdata/CN=master'
 

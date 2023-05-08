@@ -8,5 +8,6 @@ build:
 	docker build -t lingoxp/hadoop-nodemanager:$(current_branch2) ./nodemanager
 	docker build -t lingoxp/hadoop-historyserver:$(current_branch2) ./historyserver
 	docker build -t lingoxp/hadoop-submit:$(current_branch2) ./submit
+	docker build -t lingoxp/testenv:$(current_branch2) ./testenv
 	docker build -t lingoxp/hive:$(current_branch1) ./hive
 
