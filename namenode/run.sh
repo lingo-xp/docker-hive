@@ -131,6 +131,9 @@ kadmin.local -q "xst  -k localclient.keytab  lingo/localclient@DIPEAK.COM"
 kadmin.local -q "addprinc -randkey root/testenv@DIPEAK.COM"
 kadmin.local -q "xst  -k testenv.keytab  root/testenv@DIPEAK.COM"
 
+kadmin.local -q "addprinc -randkey hive/localclient@DIPEAK.COM"
+kadmin.local -q "xst  -k hive.keytab  hive/localclient@DIPEAK.COM"
+
 openssl req -nodes -new -x509 -keyout ca_private.key -out ca_cert -days 9999 -subj '/C=CN/ST=hangzhou/O=bigdata/OU=bigdata/CN=master'
 
 cd /
