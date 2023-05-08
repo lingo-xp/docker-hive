@@ -125,6 +125,7 @@ services:
     depends_on:
       - nodemanager
       - hive-metastore
+      - namenode
 
 
   hive-metastore:
@@ -146,6 +147,7 @@ services:
         ipv4_address: 172.16.0.5
     depends_on:
       - nodemanager
+      - namenode
       - hive-metastore-postgresql
 
 
