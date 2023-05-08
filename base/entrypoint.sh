@@ -40,6 +40,7 @@ configure /etc/hadoop/mapred-site.xml mapred MAPRED_CONF
 
 if [ -d "/opt/hive" ]; then
     configure /opt/hive/conf/hive-site.xml hive HIVE_SITE_CONF
+    cp /etc/hadoop/core-site.xml /opt/hive/conf/core-site.xml
 fi
 
 
