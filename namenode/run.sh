@@ -94,7 +94,7 @@ echo "172.16.0.6    hive-metastore-postgresql" >> /etc/hosts
 echo "172.16.0.7    resourcemanager" >> /etc/hosts
 echo "172.16.0.8    nodemanager" >> /etc/hosts
 echo "172.16.0.9    historyserver" >> /etc/hosts
-echo "192.168.113.75    localclient" >> /etc/hosts
+echo "192.168.110.15    localclient" >> /etc/hosts
 
 
 mkdir -p /keys
