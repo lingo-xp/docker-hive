@@ -9,4 +9,5 @@ echo "172.16.0.7    resourcemanager" >> /etc/hosts
 echo "172.16.0.8    nodemanager" >> /etc/hosts
 
 kinit -k -t /keys/historyserver.keytab root/historyserver@DIPEAK.COM
+while :; do  sleep 10; done
 $HADOOP_HOME/bin/yarn --config $HADOOP_CONF_DIR historyserver

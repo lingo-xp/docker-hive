@@ -91,7 +91,6 @@ services:
     image: lingoxp/hadoop-historyserver:2.0.4-hadoop3.3.5-java8
     hostname: historyserver
     container_name: historyserver
-    restart: always
     depends_on:
       - namenode
       - datanode
