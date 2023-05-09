@@ -92,8 +92,8 @@ services:
     hostname: historyserver
     container_name: historyserver
     environment:
-      YARN_CONF_mapreduce_jobhistory_webapp_spnego-keytab-file: "/keys/historyserver.keytab"
-      YARN_CONF_mapreduce_jobhistory_webapp_spnego-principal: "root/historyserver@DIPEAK.COM"
+      YARN_CONF_yarn_timeline-service_keytab: "/keys/historyserver.keytab"
+      YARN_CONF_yarn_timeline-service_principal: "root/historyserver@DIPEAK.COM"
     depends_on:
       - namenode
       - datanode
