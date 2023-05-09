@@ -26,7 +26,7 @@ if [ ! -z "$HIVE_TYPE" ];then
     hadoop fs -mkdir -p    /user/hive/warehouse
     hadoop fs -chmod g+w   /tmp
     hadoop fs -chmod g+w   /user/hive/warehouse
-    /opt/hive/bin/hiveserver2
+    /opt/hive/bin/hive --service hiveserver2
   else
     echo "hive metastore start"
     echo "172.16.0.2    namenode" >> /etc/hosts

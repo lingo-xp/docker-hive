@@ -41,9 +41,7 @@ ADD conf/ivysettings.xml $HIVE_HOME/conf
 ADD conf/llap-daemon-log4j2.properties $HIVE_HOME/conf
 
 ADD startup.sh /startup.sh
-RUN chmod a+x /startup.sh && mv /opt/hive/lib/log4j-slf4j-impl-2.17.1.jar /opt/hive/lib/log4j-slf4j-impl-2.17.1.jar.bak
-
-
+RUN chmod a+x /startup.sh
 
 EXPOSE 10000
 EXPOSE 10002

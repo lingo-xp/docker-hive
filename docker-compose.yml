@@ -87,23 +87,23 @@ services:
         ipv4_address: 172.16.0.8
 
 
-#  historyserver:
-#    image: lingoxp/hadoop-historyserver:2.0.4-hadoop3.3.5-java8
-#    hostname: historyserver
-#    container_name: historyserver
-#    restart: always
-#    depends_on:
-#      - namenode
-#      - datanode
-#      - resourcemanager
-#    volumes:
-#      - historyserver:/hadoop/yarn/timeline
-#      - '~/keys:/keys'
-#    env_file:
-#      - ./hadoop-hive.env
-#    networks:
-#      net:
-#        ipv4_address: 172.16.0.9
+  historyserver:
+    image: lingoxp/hadoop-historyserver:2.0.4-hadoop3.3.5-java8
+    hostname: historyserver
+    container_name: historyserver
+    restart: always
+    depends_on:
+      - namenode
+      - datanode
+      - resourcemanager
+    volumes:
+      - historyserver:/hadoop/yarn/timeline
+      - '~/keys:/keys'
+    env_file:
+      - ./hadoop-hive.env
+    networks:
+      net:
+        ipv4_address: 172.16.0.9
 
   hive-server:
     image: lingoxp/hive:3.1.7-postgresql-metastore
@@ -140,6 +140,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000"
       HIVE_TYPE: "metastore"
+      HIVE_SITE_CONF_hive_metastore_local: "false"
     ports:
       - "9083:9083"
     networks:
