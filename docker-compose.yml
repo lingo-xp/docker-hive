@@ -91,9 +91,6 @@ services:
     image: lingoxp/hadoop-historyserver:2.0.4-hadoop3.3.5-java8
     hostname: historyserver
     container_name: historyserver
-    environment:
-      YARN_CONF_yarn_timeline___service_keytab: "/keys/historyserver.keytab"
-      YARN_CONF_yarn_timeline___service_principal: "root/historyserver@DIPEAK.COM"
     depends_on:
       - namenode
       - datanode
@@ -117,7 +114,6 @@ services:
     volumes:
       - '~/keys:/keys'
     environment:
-      HIVE_SITE_CONF_hive_server2_transport_mode: "binary"
       HIVE_TYPE: "server"
     ports:
       - "10000:10000"
@@ -142,7 +138,6 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000"
       HIVE_TYPE: "metastore"
-      HIVE_SITE_CONF_hive_metastore_local: "false"
     ports:
       - "9083:9083"
     networks:
