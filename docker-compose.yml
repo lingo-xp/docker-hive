@@ -115,7 +115,7 @@ services:
     volumes:
       - '~/keys:/keys'
     environment:
-      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+      HIVE_SITE_CONF_hive_server2_transport_mode: "binary"
       HIVE_TYPE: "server"
     ports:
       - "10000:10000"
