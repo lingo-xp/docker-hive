@@ -91,6 +91,9 @@ services:
     image: lingoxp/hadoop-historyserver:2.0.4-hadoop3.3.5-java8
     hostname: historyserver
     container_name: historyserver
+    environment:
+      YARN_CONF_mapreduce_jobhistory_webapp_spnego-keytab-file: "/keys/historyserver.keytab"
+      YARN_CONF_mapreduce_jobhistory_webapp_spnego-principal: "root/historyserver@DIPEAK.COM"
     depends_on:
       - namenode
       - datanode
