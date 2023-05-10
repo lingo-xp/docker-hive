@@ -28,6 +28,7 @@ services:
       - ./hadoop-hive.env
     ports:
       - "9870:9870"
+      - "8020:8020"
       - "9000:9000"
       - "88:88"
       - "464:464"
@@ -138,6 +139,7 @@ services:
     environment:
       SERVICE_PRECONDITION: "namenode:9000"
       HIVE_TYPE: "metastore"
+      HADOOP_USER_NAME: "root"
     ports:
       - "9083:9083"
     networks:
