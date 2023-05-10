@@ -47,8 +47,8 @@ RUN chmod a+x /entrypoint.sh
 RUN echo "sun.security.krb5.disableReferrals=true" >> /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/security/java.security && \
     echo "crypto.policy=unlimited" >> /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/security/java.security
 
-COPY local_policy.jar /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/security/java.security/local_policy.jar
-COPY US_export_policy.jar /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/security/java.security/local_policy.jar
+COPY local_policy.jar /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/security/local_policy.jar
+COPY US_export_policy.jar /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/security/US_export_policy.jar
 COPY krb5.conf /etc/krb5.conf
 
 ENTRYPOINT ["/entrypoint.sh"]
