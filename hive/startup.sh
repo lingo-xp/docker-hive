@@ -10,6 +10,7 @@ echo "172.16.0.6    hive-metastore-postgresql" >> /etc/hosts
 
 echo "$HIVE_TYPE"
 
+cp /
 
 if [ ! -z "$HIVE_TYPE" ];then
 	if [ "$HIVE_TYPE" == "server" ];then
